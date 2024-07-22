@@ -16,11 +16,11 @@ Clone the FarmAI repository by running:
 This application consists of a frontend and a backend, both containerized using Docker. Follow these steps to run the application:
 
 1. Navigate to the backend folder and run
--docker build -t farmai-backend .
--docker run -p 5001:5000 farmai-backend
+#docker build -t farmai-backend .
+docker run -p 5001:5000 farmai-backend
 
 3. Navigate to the Frontend folder and run:
--docker build -t farmai-frontend .
--docker run -p 5001:5000 farmai-frontend
+#docker build -t farmai-frontend .
+#docker run -p 5001:5000 farmai-frontend
 ## Usage
--Navigate to http://localhost:3000 on your browser to interact with the FarmAI platform. The application provides interfaces for credit scoring and fertilizer recommendations.
+#Navigate to http://localhost:3000 on your browser to interact with the FarmAI platform. The application provides interfaces for credit scoring and fertilizer recommendations.
