@@ -5,9 +5,14 @@ FarmAI is designed to help farmers with credit scoring and fertilizer recommenda
 ## Prerequisites
 Before you begin, ensure you have installed:
 * Docker ([Installation guide](https://docs.docker.com/get-docker/))
+* The .env with API keys will be shared separately
+
 ## Installation
 Clone the FarmAI repository by running:
 * git clone https://github.com/yourusername/farmai.git
+
+## Environment variables
+ *The .env file is critical as it contains the API keys. After cloning the repository, copy it from the zip folder provided into the backend folder before running the application
 
 ## Navigatee to the cloned repository
 *cd farmai
