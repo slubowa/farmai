@@ -26,6 +26,6 @@ This application consists of a frontend and a backend, both containerized using 
 
 3. Navigate to the Frontend folder and run:
 * docker build -t farmai-frontend .
-* docker run -p 5001:5000 farmai-frontend
+* docker run -p 3000:3000 farmai-frontend
 ## Usage
 * Navigate to http://localhost:3000 on your browser to interact with the FarmAI platform. The application provides interfaces for credit scoring and fertilizer recommendations.
