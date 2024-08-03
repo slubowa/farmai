@@ -4,7 +4,25 @@ from sklearn.ensemble import RandomForestRegressor
 import joblib
 
 class CreditScoringModel:
+    """
+    A model for computing credit scores based on financial stability metrics.
+    
+    Attributes:
+        weights (dict): Weights assigned to each scoring factor.
+        model (RandomForestRegressor): The trained model for credit scoring predictions.
+    """
     def __init__(self, income_stability_weight=0.3, income_mean_weight=0.3, expense_stability_weight=0.1, expense_mean_weight=0.1, yield_weight=0.15, community_weight=0.05):
+        """
+        Initializes the CreditScoringModel with specified weights for scoring factors.
+        
+        Parameters:
+            income_stability_weight (float): Weight for income stability.
+            income_mean_weight (float): Weight for average income.
+            expense_stability_weight (float): Weight for expense stability.
+            expense_mean_weight (float): Weight for average expenses.
+            yield_weight (float): Weight for yield consistency.
+            community_weight (float): Weight for community engagement.
+        """
         self.weights = {
             'income_stability': income_stability_weight,
             'income_mean': income_mean_weight,
@@ -16,10 +34,30 @@ class CreditScoringModel:
         self.model = None
 
     def normalize(self, value, min_val, max_val):
+        """
+        Normalizes a value to a 0-100 scale based on specified minimum and maximum values.
+        
+        Parameters:
+            value (float): The value to normalize.
+            min_val (float): The minimum value of the range.
+            max_val (float): The maximum value of the range.
+        
+        Returns:
+            float: The normalized value.
+        """
         clipped_value = np.clip(value, min_val, max_val)
         return (clipped_value - min_val) / (max_val - min_val) * 100
 
     def calculate_credit_score(self, row):
+        """
+        Calculates the credit score based on weighted contributions of each financial indicator.
+        
+        Parameters:
+            row (dict): A dictionary containing all necessary financial metrics.
+        
+        Returns:
+            float: The calculated credit score.
+        """
         # Normalize scores within their respective ranges
         income_stability_score = self.normalize(row['income_stability'], 0, 1)
         income_mean_score = self.normalize(row['income_mean'], 0, 1000)  

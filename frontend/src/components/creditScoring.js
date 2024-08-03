@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Button, TextField, Typography, CircularProgress, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 import { getCreditScore } from '../api/apiClient';
-
+/**
+ * A React component that provides a form interface for calculating credit scores.
+ */
 const CreditScoring = () => {
   const [incomeMonth1, setIncomeMonth1] = useState('');
   const [incomeMonth2, setIncomeMonth2] = useState('');
@@ -15,13 +17,18 @@ const CreditScoring = () => {
   const [communityEngagement, setCommunityEngagement] = useState('');
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-
+/**
+   * Calculates the variance and stability of a sequence of values.
+   * Stability here is defined as the standard deviation divided by the mean.
+   */
   const calculateVariances = (values) => {
     const mean = values.reduce((a, b) => a + b, 0) / values.length;
     const variance = values.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / values.length;
     return { mean, variance, stability: Math.sqrt(variance) / mean };
   };
-
+/**
+   * Maps the string description of community engagement to a numerical score.
+   */
   const mapCommunityEngagement = (response) => {
     const communityEngagementMap = {
       "Never": 0,
@@ -32,7 +39,10 @@ const CreditScoring = () => {
     };
     return communityEngagementMap[response] || 0; // Default to 0 if response not in map
   };
-
+/**
+  * Handles the submission of the credit scoring form.
+  * Collects all form data, processes it, and sends it to the API.
+  */
   const handleSubmit = async () => {
     setLoading(true);
     try {

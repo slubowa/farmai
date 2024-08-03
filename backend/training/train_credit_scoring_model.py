@@ -10,13 +10,30 @@ sys.path.append(project_root)
 from backend.models.credit_scoring_model import CreditScoringModel 
 
 def calculate_variances(values):
+    """
+    Calculate the mean, variance, and stability of a numeric array.
+
+    Parameters:
+        values (array-like): Numeric data for which to calculate statistics.
+
+    Returns:
+        tuple: mean, variance, and stability of the input values.
+    """
     mean = np.mean(values)
     variance = np.var(values)
     stability = np.std(values) / mean if mean != 0 else 0
     return mean, variance, stability
 
 def generate_synthetic_data(n):
-    """ Function to generate synthetic data for the features"""
+    """
+    Generate synthetic data for testing the credit scoring model.
+
+    Parameters:
+        n (int): Number of data points to generate.
+
+    Returns:
+        DataFrame: A DataFrame with synthetic income, expenses, yields, and community engagement data.
+    """
     income_data = np.random.uniform(500, 2000, n)
     expense_data = np.random.uniform(200, 800, n)
     yield_data = np.random.uniform(10, 50, n)
@@ -34,6 +51,9 @@ def generate_synthetic_data(n):
     return data
 
 def train_credit_scoring():
+    """
+    Main function to train the credit scoring model using synthetic data.
+    """
     # Generate synthetic data
     data = generate_synthetic_data(1000)
 

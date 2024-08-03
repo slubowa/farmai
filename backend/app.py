@@ -8,19 +8,22 @@ from openai import OpenAI
 from models.fertilizer_recomm_oo import FertilizerPredictor
 from models.credit_scoring_model import CreditScoringModel
 
+# Load environment variables from .env file
 load_dotenv()
 
+# Initialize Flask application
 app = Flask(__name__)
-CORS(app)
+CORS(app) # Enable CORS
 
+# Configure OpenAI client with API key from environment variables
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
-# Flask-Session
+# Configure session type and secret key for Flask session management
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SECRET_KEY'] = os.getenv('FLASK_APP_SECRET_KEY')
 Session(app)
 
-# Load the credit scoring model
+# Load the credit scoring model from the filesystem
 
 model_path = os.path.join(os.path.dirname(__file__), 'models', 'credit_scoring_model.pkl')
 credit_model = CreditScoringModel()

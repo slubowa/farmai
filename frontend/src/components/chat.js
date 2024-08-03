@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { Box, Button, TextField, Typography, CircularProgress, Paper } from '@mui/material';
 import { askQuestion } from '../api/apiClient';
-
+/**
+ * A React component for a chat interface that allows users to interact with FarmAI.
+ */
 const Chat = () => {
+  // State for storing the current question input by the user.
   const [question, setQuestion] = useState('');
+  // State for storing the conversation history as an array of message objects.
   const [conversation, setConversation] = useState([]);
+  // State to handle the loading state during API requests
   const [loading, setLoading] = useState(false);
-
+/**
+   * Handles the submission of the question to the backend.
+   * Updates the conversation state with both the user's question and FarmAI's response.
+   */
   const handleSubmit = async () => {
     setLoading(true);
     const res = await askQuestion(question); 
@@ -14,7 +22,9 @@ const Chat = () => {
     setQuestion('');
     setLoading(false);
   };
-
+/**
+   * Handles the Enter key press to submit the question when pressed.
+   */
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();

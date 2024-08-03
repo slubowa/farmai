@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { Box, Button, TextField, Typography, CircularProgress } from '@mui/material';
 import { getFertilizerRecommendation } from '../api/apiClient';
-
+/**
+ * A React component for obtaining fertilizer recommendations based on user inputs.
+ */
 const FertilizerRecommendation = () => {
   const [areaName, setAreaName] = useState('');
   const [cropType, setCropType] = useState('');
   const [farmSize, setFarmSize] = useState('');
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-
+/**
+  * Handles the submission of the form and makes an API call to get fertilizer recommendations.
+  */
   const handleSubmit = async () => {
     setLoading(true);
     try {

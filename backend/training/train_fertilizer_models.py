@@ -7,7 +7,8 @@ import joblib
 # Load the combined dataset
 df = pd.read_csv('../data/soil_climate_yield_data.csv')
 
-# Features for modeling
+# Define the features used for the model. These are 
+# the environmental and soil characteristics.
 features = ['PHAQ', 'TOTC', 'TOTN', 'CECS','TEMP', 'RAIN', 'HUMI', 'SUNH']
 X = df[features]
 y_maize = df['Estimated_Maize_Yield']

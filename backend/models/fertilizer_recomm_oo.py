@@ -19,7 +19,13 @@ class Geocoder:
     @staticmethod
     def geocode_area_name(area_name):
         """
-        Geocode an area name to its latitude and longitude coordinates.
+        Converts an area name into geographic coordinates.
+        
+        Parameters:
+            area_name (str): The name of the area to geocode.
+        
+        Returns:
+            tuple: A tuple containing the latitude and longitude of the area.
         """
         api_url = f'https://nominatim.openstreetmap.org/search?q={area_name}&format=json'
         headers = {
@@ -48,7 +54,17 @@ class SoilDataFetcher:
     """
     def fetch_soil_data(self, latitude, longitude, radius=0.5, max_attempts=10, step=0.05):
         """
-        Fetch soil data for a given latitude and longitude, with a specified search radius and max attempts.
+        Attempts to fetch soil data within a radius around specified coordinates.
+        
+        Parameters:
+            latitude (float): Latitude of the location.
+            longitude (float): Longitude of the location.
+            radius (float): Radius to vary the latitude and longitude for multiple fetch attempts.
+            max_attempts (int): Maximum number of fetch attempts.
+            step (float): Step size to increment latitude and longitude in each attempt.
+        
+        Returns:
+            DataFrame: Pandas DataFrame containing soil properties if data is found, else None.
         """
         attempt = 0
         
@@ -102,7 +118,15 @@ class WeatherDataFetcher:
     """
     def fetch_weather_data(self, latitude, longitude, api_key):
         """
-        Fetch weather data for a given latitude and longitude using an API key.
+        Fetches current weather data for specified coordinates.
+        
+        Parameters:
+            latitude (float): Latitude of the location.
+            longitude (float): Longitude of the location.
+            api_key (str): API key for accessing OpenWeatherMap API.
+        
+        Returns:
+            dict: Dictionary containing weather conditions such as temperature and humidity.
         """
         api_url = f'http://api.openweathermap.org/data/3.0/onecall?lat={latitude}&lon={longitude}&appid={api_key}&units=metric'
         response = requests.get(api_url)
