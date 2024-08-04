@@ -9,7 +9,7 @@ Before you begin, ensure you have installed:
 
 ## Installation
 Clone the FarmAI repository by running:
-* git clone https://github.com/yourusername/farmai.git
+* git clone https://github.com/slubowa/farmai.git
 
 ## Environment variables
  *The .env file is critical as it contains the API keys. After cloning the repository, copy it as provided into the backend folder before running the application. If you do not have access to this file you have create your own .env file with api keys for open AI, Nomatim, open weather and the flask app secret.
